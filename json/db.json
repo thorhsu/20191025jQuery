@@ -1,0 +1,37 @@
+{
+  "posts": [
+    "BENZ",
+    "TOYOTA",
+    "BMW",
+    "MAZDA"
+  ],
+  "price1": [
+    500000
+  ],
+  "price2": [
+    100000
+  ],
+  "price3": [
+    400000
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "myComments": [
+    {
+      "id": "1",
+      "comment": "test"
+    },
+    {
+      "id": "2",
+      "comment": "love"
+    }
+  ]
+}

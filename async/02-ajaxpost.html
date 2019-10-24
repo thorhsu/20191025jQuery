@@ -1,0 +1,26 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" language="Javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script language="javascript" type="text/javascript">
+    $(document).ready(function(){
+        $("#setip").on("click", function(){
+            $.ajax({
+                url: "http://jsonplaceholder.typicode.com/posts",
+                type: "POST",
+                dataType: "json",
+                data: { ip: '192.168.5.101'},
+                success: function(result){
+                    console.log(result.ip)
+                    $("#myip").text(result.ip)
+                }
+            });
+        });
+    });
+    </script>
+</head>
+<body>
+    <button id="setip">設定我的IP位址為192.168.5.101 </button>
+    <div id="myip"></div>
+</body>
+</html> 
