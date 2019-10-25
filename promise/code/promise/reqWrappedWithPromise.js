@@ -1,4 +1,6 @@
 const request = require('request');
+// let key = 'AIzaSyCZhfps2a25Z-aZWonu29Kkilm8b3tvlcQ';
+let key = 'AIzaSyCZhfps2a25Z-aZWonu29K';
 let addressUrl = `https://maps.googleapis.com/maps/api/geocode/json?key=${key}&address=Taipei&callback=initMap`;
 
 
