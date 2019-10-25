@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" language="Javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script language="javascript" type="text/javascript">
+	$(document).ready(function(){
+		$("#getAllProduct").on("click", function(){
+            $.get("http://localhost:3000/posts", function(datas){
+				datas.forEach(function(data, index){
+					$(`#product${index + 1} .productname` ).text(data);
+
+				});
+            });
+			
+		});
+		$(".getprice").on("click", function(event){
+			var classes = $(this).attr("class").split(" ");
+			var self = this;
+			$.get(`http://localhost:3000/${classes[1]}`, function(data){
+                $(self).prev().find(".productprice").text(data[0]);
+            });
+		});		
+		$(".myComment").on("click", function(event){
+			$.get(`http://localhost:3000/myComments`, function(data){
+                var source_len = data.length; 
+				// 為什麼要這樣做
+				$.post(`http://localhost:3000/myComments`, {"id": source_len + 1, "comment": $("#my-comment").val()}, function(data){
+					console.log(data)
+				})
+            });
+			// 為什麼不放在這
+			// $.post(`http://localhost:3000/myComments`, {"id": source_len + 1, "comment": $("#my-comment").val()}, function(data){
+				//console.log(data)
+			//})
+			
+		});		
+	});
+</script>
+ </head>
+<body>
+	<button id="getAllProduct">取得所有產品</button>
+	<hr>
+	<div id="product1">
+		<div>
+			<span>產品1: </span><span class="productname"></span>
+		</div>
+		<div>
+			<span>價格1: </span><span class="productprice"></span>
+		</div>
+		<button class="getprice price1" >取得產品1價格</button>
+	</div>
+	<hr>	
+	<div id="product2">
+		<div>
+			<span>產品2: </span><span class="productname"></span>
+		</div>
+		<div>
+			<span>價格2: </span></span><span class="productprice"></span>
+		</div>
+		<button class="getprice price2" id="1">取得產品2價格</button>
+	</div>	
+	<hr>	
+	<div id="product3">
+		<div>
+			<span>產品3: </span><span class="productname"></span>
+		</div>
+		<div>
+			<span>價格3: </span></span><span class="productprice"></span>
+		</div>
+		<button class="getprice price3">取得產品3價格</button>
+	</div>	
+	<hr>
+	<div>
+		<div>
+			<span>說明: </span><span ><input id="my-comment"></span>
+			<button class="myComment">送出評論</button>
+		</div>
+	</div>
+</body>
+</html>
